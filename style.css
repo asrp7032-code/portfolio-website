@@ -49,7 +49,7 @@ section {
   padding: 6px 10px;
   border-radius: 6px;
 }
-
+ 
 .nav-links a:hover {
   background: rgba(0,229,255,0.2);
   color: #00e5ff;
@@ -623,6 +623,44 @@ p, h1, h2, h3 {
 /* ---------- DARK MODE MOBILE SAFETY ---------- */
 body.dark .navbar {
   background: linear-gradient(135deg, #000, #222);
+}
+/* ================= MOBILE HOTFIX (ADD ONLY) ================= */
+
+/* 1️⃣ Restore nav links on mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  #darkToggle {
+    padding: 8px;
+    margin-left: auto;
+  }
+}
+
+/* 2️⃣ Fix project links not clickable (overlay issue) */
+.project-card::before {
+  pointer-events: none !important;
+}
+
+.project-links,
+.project-link {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* 3️⃣ Prevent horizontal overflow on mobile */
+body {
+  overflow-x: hidden;
 }
 
 
